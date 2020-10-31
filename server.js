@@ -25,10 +25,10 @@ const corsOptions = {
 // end 
 app.use(cors(corsOptions));
 
-app.use(express.static('./dist/ngimal'));
+app.use(express.static('./dist/highcharts-angular-map'));
 
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/dist/ngimal/index.html'));
+    res.sendFile(path.join(__dirname+'/dist/highcharts-angular-map/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
