@@ -15,7 +15,8 @@ export class AppComponent {
 
   chartOptions: Options = {
     chart: {
-      map: worldMap as any
+      map: worldMap as any,
+      backgroundColor: '#C0C0C0'
     },
     title: {
       text: "Highmaps basic demo"
