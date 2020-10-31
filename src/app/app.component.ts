@@ -1,14 +1,37 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import Highcharts from "highcharts/highmaps";
 import { Options } from "highcharts";
 import worldMap from "@highcharts/map-collection/custom/world.geo.json";
+import { MatSliderChange } from '@angular/material/slider';
+import { Globals } from './model/globals';
+import { CommonService } from './service/common.service';
+import { NewsfeedService } from './service/newsfeed.service';
+import { YearIntervals } from './model/yearIntervals';
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
+  constructor(private globals: Globals, private commonService: CommonService, private newsfeedService: NewsfeedService) { }
+  
+  yearIntervals : YearIntervals = {
+    yearMax: null,
+    yearMin: null
+  }
+  
+  ngOnInit(): void {
+    this.newsfeedService.getYearIntervals().subscribe(yearIntervals => {
+      this.yearIntervals = yearIntervals;
+    });
+  }
+
+  sliderOnChange(value: number) {
+    this.globals.year = value;
+    this.commonService.sliderChanged(value);
+  }
+  
   Highcharts: typeof Highcharts = Highcharts;
   chartConstructor = "mapChart";
   chartData = [{ code3: "ABW", z: 105 }, { code3: "AFG", z: 35530 }];

@@ -1,16 +1,24 @@
 <div style="display:inline-block; margin-top: -1%; margin-left: 1%;">
 	<app-brand></app-brand>
 </div>
-<div style="display:inline-block;">
+<div style="display:fixed;">
 	<app-newsfeed></app-newsfeed>
 </div>
 
 
-<highcharts-chart
-			id="container" 
-			[Highcharts]="Highcharts"
-			[constructorType]="chartConstructor"
-			[options]="chartOptions">
-		</highcharts-chart>
+
+
+<br>
+
+<div>
+	<div>
+		<mat-slider #mySlider style="margin-left: 50%;" thumbLabel tickInterval="1" min={{yearIntervals.yearMin}} value={{this.globals.year}} max={{yearIntervals.yearMax}}
+			(slideend)="sliderOnChange(mySlider.value)" (pointerup)="sliderOnChange(mySlider.value)"></mat-slider>
+	</div>
+
+	<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
+		[options]="chartOptions">
+	</highcharts-chart>
+</div>
 
 <app-footer></app-footer>

@@ -1,33 +1,67 @@
 <!-- Grid row -->
 <div class="row">
 
-    <!-- Grid column -->
-    <div class="column mb-4 px-2">
-      <!--Card Primary-->
-      <div class="card text-center z-depth-2">
-          <a href={{newsfeeds[0].link}} target="_blank">
-            <div class="card-body">
-                <a class="white-text mb-0 small" >{{newsfeeds[0].title}}</a>
-              </div>
-          </a>
+  <mdb-card [hidden]="newsfeeds[0] !== undefined" style="margin-left: 600px; height: 62px; width:400px; margin-top: 40px">
+    <mdb-card-body>
+      <mdb-card-title>
+      <h4>No articles for year {{this.globals.year}}</h4>
+      </mdb-card-title>
+      <mdb-card-text style="overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;"></mdb-card-text>
+      <div class="flex-row">
+      <a class="card-link"></a>
       </div>
-      <!--/.Card Primary-->
-    </div>
-    <!-- Grid column -->
-    
-    <!-- Grid column -->
-    <div class="column mb-4 px-2">
-        <!--Card Primary-->
-        <div class="card text-center z-depth-2">
-            <a href={{newsfeeds[1].link}} target="_blank">
-              <div class="card-body">
-                  <a class="white-text mb-0 small" >{{newsfeeds[1].title}}</a>
-                </div>
-            </a>
-        </div>
-        <!--/.Card Primary-->
+    </mdb-card-body>
+  </mdb-card>
+
+  <mdb-card [hidden]="newsfeeds[0] == undefined" style="margin-left: 100px; height: 135px; width:400px;">
+    <mdb-card-body>
+      <mdb-card-title>
+      <h4>{{this.globals.year}} climate change related news</h4>
+      </mdb-card-title>
+      <mdb-card-text style="overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;">{{newsfeeds[0]?.title}}</mdb-card-text>
+      <div class="flex-row">
+      <a class="card-link" href={{newsfeeds[0]?.link}} target="_blank">Check story</a>
       </div>
-      <!-- Grid column -->
+    </mdb-card-body>
+  </mdb-card>
+
+  <mdb-card [hidden]="newsfeeds[1] == undefined" style="margin-left: 100px; height: 135px; width:400px;">
+    <mdb-card-body>
+      <mdb-card-title>
+      <h4>{{this.globals.year}} climate change related news</h4>
+      </mdb-card-title>
+      <mdb-card-text style="overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;">{{newsfeeds[1]?.title}}</mdb-card-text>
+      <div class="flex-row">
+      <a class="card-link" href={{newsfeeds[1]?.link}} target="_blank">Check story</a>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
   
+  <mdb-card [hidden]="newsfeeds[2] == undefined" style="margin-left: 100px; height: 135px; width:400px; margin-right: -100px">
+    <mdb-card-body>
+      <mdb-card-title>
+      <h4>{{this.globals.year}} climate change related news</h4>
+      </mdb-card-title>
+      <mdb-card-text style="overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;">{{newsfeeds[2]?.title}}</mdb-card-text>
+      <div class="flex-row">
+      <a class="card-link" href={{newsfeeds[2]?.link}} target="_blank">Check story</a>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+
   </div>
   <!-- Grid row -->
+
+  

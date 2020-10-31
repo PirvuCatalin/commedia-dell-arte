@@ -6,12 +6,14 @@ import { map } from 'rxjs/operators';
 import { NewsFeed } from '../model/newsfeed';
 import { ResultInterface } from '../model/resultInterface';
 import { Globals } from '../model/globals';
+import { YearIntervals } from '../model/yearIntervals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsfeedService {
-  newsfeedUrl = "https://mysterious-reef.herokuapp.com/get_articles?number_of_articles=2&year=";
+  newsfeedUrl = "https://mysterious-reef.herokuapp.com/get_articles?number_of_articles=3&year=";
+  intervalYearsUrl = "https://mysterious-reef.herokuapp.com/get_interval_heads";
 
   mockNewsfeeds : NewsFeed[] = [
     {title:"Un titlu de articol foarte smecher cu catei aruncati de pe marte.", year:2019, link:"https://www.google.ro"},
@@ -34,6 +36,17 @@ export class NewsfeedService {
     );
 
     // return of(this.mockNewsfeeds);
+  }
+
+  getYearIntervals() : Observable<YearIntervals> {
+    return this.http.get<ResultInterface>(this.intervalYearsUrl).pipe(
+      map(results => {
+        let yearIntervals : YearIntervals = new YearIntervals;
+        yearIntervals.yearMin = results.result["minimum"]["year"];
+        yearIntervals.yearMax = results.result["maximum"]["year"];
+        return yearIntervals;
+      })
+    );
   }
 
 }
