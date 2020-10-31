@@ -11,7 +11,7 @@ import { Globals } from '../model/globals';
   providedIn: 'root'
 })
 export class NewsfeedService {
-  newsfeedUrl = "https://mysterious-reef.herokuapp.com/get_articles?number_of_articles=1&year=";
+  newsfeedUrl = "https://mysterious-reef.herokuapp.com/get_articles?number_of_articles=2&year=";
 
   mockNewsfeeds : NewsFeed[] = [
     {title:"Un titlu de articol foarte smecher cu catei aruncati de pe marte.", year:2019, link:"https://www.google.ro"},
