@@ -1,8 +1,16 @@
-<app-brand></app-brand>
-		<highcharts-chart
+<div style="display:inline-block; margin-top: -1%; margin-left: 1%;">
+	<app-brand></app-brand>
+</div>
+<div style="display:inline-block;">
+	<app-newsfeed></app-newsfeed>
+</div>
+
+
+<highcharts-chart
 			id="container" 
 			[Highcharts]="Highcharts"
 			[constructorType]="chartConstructor"
-			[options]="chartOptions"
-		>
+			[options]="chartOptions">
 		</highcharts-chart>
+
+<app-footer></app-footer>

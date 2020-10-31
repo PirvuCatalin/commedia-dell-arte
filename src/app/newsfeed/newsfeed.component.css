@@ -1,0 +1,16 @@
+.column {
+    width: 500px;
+}
+
+.row {
+    margin-left: 400px;
+    height: 150px;
+}
+
+.card {
+    background-color: rgba(255,0,0,0.55);
+}
+
+.card-body:hover {
+    background-color: rgba(255, 255, 0, 0.8);
+}
