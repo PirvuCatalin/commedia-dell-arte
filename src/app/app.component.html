@@ -8,17 +8,18 @@
 
 
 
-<br>
+
 
 <div>
 	<div>
+		<mat-card style="width: 100%;">Simple card</mat-card>
 		<mat-slider #mySlider style="margin-left: 50%;" thumbLabel tickInterval="1" min={{yearIntervals.yearMin}} value={{this.globals.year}} max={{yearIntervals.yearMax}}
 			(slideend)="sliderOnChange(mySlider.value)" (pointerup)="sliderOnChange(mySlider.value)"></mat-slider>
 	</div>
 
 	<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
-		[options]="chartOptions">
+		[options]="chartOptions" [(update)]="updateTemperaturesFlag">
 	</highcharts-chart>
 </div>
 
-<app-footer></app-footer>
+<app-footer style="margin-left: -10px;"></app-footer>

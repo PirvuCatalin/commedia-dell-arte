@@ -12,9 +12,10 @@ import { Globals } from './model/globals';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule],
+  imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule, MatCardModule],
   declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent ],
   bootstrap:    [ AppComponent ],
   providers: [Globals]
