@@ -24,6 +24,8 @@ export class AppComponent implements OnInit  {
     ceil: 2003
   };
 
+  interval: any;
+
   months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov", "Dec"]
 
   monthOptions: SliderOptions = {
@@ -175,12 +177,9 @@ export class AppComponent implements OnInit  {
           
       }
 
-
-
       this.chartOptions.series[0]["data"] = countryTemps;
 
       this.updateTemperaturesFlag = true;
-      
     });
   }
   
@@ -258,8 +257,32 @@ export class AppComponent implements OnInit  {
   };
 
   buttonChanged(e : any) : void {
-    if(!(e instanceof Event)) {
-      this.config.value = e;
+    if (!(e instanceof Event)) {
+      this.setTemperatureMapState(e);
     }
+  }
+
+  setTemperatureMapState(val : boolean): void {
+    if (val) {
+      this.liveUpdateTemperatures();
+      this.interval = setInterval(() => { 
+          this.liveUpdateTemperatures(); 
+      }, 5000);
+    } else {
+      clearInterval(this.interval);
+    }
+  }
+
+  liveUpdateTemperatures() : void {
+    if(this.globals.month == 12) {
+      this.globals.year = this.globals.year + 1;
+      this.globals.month = 1;
+    } else {
+      this.globals.month = this.globals.month + 1;
+    }
+    if(this.yearIntervals.yearMax == this.globals.year) {
+      clearInterval(this.interval);
+    }
+    this.updateTemperatures();
   }
 }

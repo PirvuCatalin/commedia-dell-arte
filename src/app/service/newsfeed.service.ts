@@ -13,10 +13,10 @@ import { CountryTemperature } from '../model/countryTemperature';
   providedIn: 'root'
 })
 export class NewsfeedService {
-  newsfeedUrl = "https://mysterious-reef.herokuapp.com/get_articles?number_of_articles=3&year=";
-  intervalYearsUrl = "https://mysterious-reef.herokuapp.com/get_interval_heads";
-  temperaturesUrl = "https://mysterious-reef.herokuapp.com/get_temperatures";
-  countryInfoUrl = "https://mysterious-reef.herokuapp.com/get_country_info";
+  newsfeedUrl = "https://utilitary-services.herokuapp.com/get_articles?number_of_articles=3&year=";
+  intervalYearsUrl = "https://utilitary-services.herokuapp.com/get_interval_heads";
+  temperaturesUrl = "https://utilitary-services.herokuapp.com/get_temperatures";
+  countryInfoUrl = "https://utilitary-services.herokuapp.com/get_country_info";
   liveDataUrl = "https://mysterious-reef.herokuapp.com/get_live_data";
 
   mockNewsfeeds : NewsFeed[] = [
