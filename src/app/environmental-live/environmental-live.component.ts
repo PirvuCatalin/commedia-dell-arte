@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsfeedService } from '../service/newsfeed.service';
+import * as Highcharts from "highcharts";
 
 @Component({
   selector: 'app-environmental-live',
@@ -14,13 +15,37 @@ export class EnvironmentalLiveComponent implements OnInit {
 
   interval: any;
 
+  meanTemperatures : any;
+
   constructor(private newsfeedService : NewsfeedService) { }
+  
+  Highcharts: typeof Highcharts = Highcharts;
+  updateFlag = false;
+  chartOptions: Highcharts.Options = {
+    series: [
+      {
+        type: "line",
+        data: []
+      }
+    ]
+  };;
 
   ngOnInit(): void {
     this.refreshData();
     this.interval = setInterval(() => { 
         this.refreshData(); 
     }, 5000);
+
+    this.newsfeedService.getMeanTemperatures().subscribe(result => {
+      let arr = [];
+      for(var i in result) {
+        arr.push([result[i].year, result[i].mean_temp]);
+      }
+      this.meanTemperatures = arr;
+
+      this.chartOptions.series[0]["data"] = this.meanTemperatures;
+      this.updateFlag = true;
+    });
   }
 
   refreshData(){
@@ -33,5 +58,9 @@ export class EnvironmentalLiveComponent implements OnInit {
       arr.push({name: "Toxic chemicals released", uom: "[T]", value: liveData["Toxic chemicals released (tons)"]});
       this.dataSource = arr;
     });
+  }
+
+  
 }
-}
+
+

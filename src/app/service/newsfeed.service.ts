@@ -13,11 +13,17 @@ import { CountryTemperature } from '../model/countryTemperature';
   providedIn: 'root'
 })
 export class NewsfeedService {
+  //gmsl
+  //max 85
+  //min -185
   newsfeedUrl = "https://utilitary-services.herokuapp.com/get_articles?number_of_articles=3&year=";
   intervalYearsUrl = "https://utilitary-services.herokuapp.com/get_interval_heads";
   temperaturesUrl = "https://utilitary-services.herokuapp.com/get_temperatures";
   countryInfoUrl = "https://utilitary-services.herokuapp.com/get_country_info";
   liveDataUrl = "https://mysterious-reef.herokuapp.com/get_live_data";
+  seaLevelUrl = "http://mysterious-reef.herokuapp.com/get_sea_level";
+  cO2PpmUrl = "http://mysterious-reef.herokuapp.com/get_co2_ppm";
+  meanTemperaturesUrl = "http://mysterious-reef.herokuapp.com/get_mean_temperatures";
 
   mockNewsfeeds : NewsFeed[] = [
     {title:"Un titlu de articol foarte smecher cu catei aruncati de pe marte.", year:2019, link:"https://www.google.ro"},
@@ -80,4 +86,28 @@ export class NewsfeedService {
       })
     );
   }  
+
+  getSeaLevel(year: number, month: number): Observable<JSON> {
+    return this.http.get(this.seaLevelUrl + `?year=${this.globals.year}&month=${this.globals.month}` ).pipe(
+      map(results => { 
+        return results["result"];
+      })
+    );
+  }
+
+  getCO2PpmUrl(year: number, month: number): Observable<JSON> {
+    return this.http.get(this.cO2PpmUrl + `?year=${this.globals.year}&month=${this.globals.month}` ).pipe(
+      map(results => { 
+        return results["result"];
+      })
+    );
+  }
+
+  getMeanTemperatures(): Observable<any> {
+    return this.http.get(this.meanTemperaturesUrl).pipe(
+      map(results => { 
+        return results;
+      })
+    );
+  }
 }

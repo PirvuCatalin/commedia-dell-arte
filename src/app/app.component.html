@@ -35,7 +35,7 @@
 			<p>Selected year: <input type="number" [(ngModel)]="this.globals.year" ></p>
 		</div> -->
 		
-		<div style="display:inline-block; width: 18%; margin-left: 5%;">
+		<div style="display:inline-block; width: 20%; margin-left: 3%;">
 			<ngx-slider (userChangeEnd)="monthSliderOnChange($event)" [(value)]="this.globals.month" [options]="monthOptions"></ngx-slider>
 		</div>
 	  	
@@ -47,7 +47,10 @@
 	</div>
 	<div>
 	<app-environmental-live></app-environmental-live>
-
+		<div class="co2">{{this.co2_ppm == "N/A" ? "N/A" : this.co2_ppm | number:'3.2-2'}}ppm</div>
+		<div class="co2Descr">(CO2)</div>
+		<div class="gmsl">{{this.gmsl == "N/A" ? "N/A" : this.gmsl | number:'2.2-2'}}mm</div>
+		<div class="gmslDescr">(GMSL)</div>
 	<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
 		[options]="chartOptions" [(update)]="updateTemperaturesFlag">
 	</highcharts-chart>

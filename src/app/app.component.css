@@ -36,3 +36,37 @@ p {
 .yearTipText1:hover {
   overflow: visible;
 }
+
+.gmsl {
+  position: fixed;
+    bottom: 20%;
+    right: 57%;
+    z-index: 9999;
+    color: blue;
+    font-size: xx-large;
+}
+
+.gmslDescr {
+  position: fixed;
+    bottom: 17%;
+    right: 59%;
+    z-index: 9999;
+    font-size: x-large;
+}
+
+.co2 {
+  position: fixed;
+    bottom: 27%;
+    right: 56%;
+    z-index: 9999;
+    color: red;
+    font-size: xx-large;
+}
+
+.co2Descr {
+  position: fixed;
+    bottom: 24%;
+    right: 60%;
+    z-index: 9999;
+    font-size: x-large;
+}

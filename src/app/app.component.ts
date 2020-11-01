@@ -181,6 +181,9 @@ export class AppComponent implements OnInit  {
 
       this.updateTemperaturesFlag = true;
     });
+
+    this.updateGmsl();
+    this.updateCO2Ppm();
   }
   
   yearSliderOnChange(changeContext : ChangeContext) {
@@ -204,7 +207,7 @@ export class AppComponent implements OnInit  {
       backgroundColor: '#C0C0C0'
     },
     title: {
-      text: "Historical temperatue & prediction"
+      text: "Historical temperature & prediction"
     },
     subtitle: {
       text:
@@ -284,5 +287,29 @@ export class AppComponent implements OnInit  {
       clearInterval(this.interval);
     }
     this.updateTemperatures();
+  }
+
+  gmsl : any = null;
+  
+  updateGmsl() : void {
+    this.newsfeedService.getSeaLevel(this.globals.year, this.globals.month).subscribe(gmsl => {
+      if(gmsl[0] == undefined) {
+        this.gmsl = "N/A";
+      } else {
+        this.gmsl = gmsl[0]["gmsl"];
+      }
+    });
+  }
+
+  co2_ppm : any = null;
+  
+  updateCO2Ppm() : void {
+    this.newsfeedService.getCO2PpmUrl(this.globals.year, this.globals.month).subscribe(co2_ppm => {
+      if(co2_ppm[0] == undefined) {
+        this.co2_ppm = "N/A";
+      } else {
+        this.co2_ppm = co2_ppm[0]["co2_ppm"];
+      }
+    });
   }
 }
