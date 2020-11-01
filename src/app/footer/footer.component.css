@@ -1,6 +1,12 @@
 .page-footer {
     width: 100%;
-    position:absolute;
-    bottom: 0px;
-    background-color: #36DE4D;
+    position: relative;
+    bottom: 0;
+    background-color: #78d384;
+    /* height: -100px; */
+    size: 10px;
+    font-size: 15px;
+}
+.facebook-button {
+    align-self: auto;
 }
