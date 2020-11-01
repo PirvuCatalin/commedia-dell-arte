@@ -270,7 +270,7 @@ export class AppComponent implements OnInit  {
       this.liveUpdateTemperatures();
       this.interval = setInterval(() => { 
           this.liveUpdateTemperatures(); 
-      }, 5000);
+      }, 3000);
     } else {
       clearInterval(this.interval);
     }

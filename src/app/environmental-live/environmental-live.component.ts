@@ -56,7 +56,7 @@ export class EnvironmentalLiveComponent implements OnInit {
     this.refreshData();
     this.interval = setInterval(() => { 
         this.refreshData(); 
-    }, 5000);
+    }, 3000);
 
     this.newsfeedService.getMeanTemperatures().subscribe(result => {
       let arr = [];
