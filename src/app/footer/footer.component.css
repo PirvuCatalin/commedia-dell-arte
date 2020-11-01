@@ -1,12 +1,13 @@
 .page-footer {
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 0%;
     background-color: #424242;
     /* height: -100px; */
     size: 10px;
     font-size: 15px;
 }
-.facebook-button {
+.footer-button {
     align-self: auto;
+    size: 1px;
 }
