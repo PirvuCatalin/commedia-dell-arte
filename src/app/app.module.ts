@@ -15,10 +15,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import { NgToggleModule } from 'ng-toggle-button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { EnvironmentalLiveComponent } from './environmental-live/environmental-live.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule, MatCardModule, NgToggleModule, NgxSliderModule, ReactiveFormsModule],
-  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent],
+  imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule, MatCardModule, NgToggleModule, NgxSliderModule, ReactiveFormsModule, MatTableModule],
+  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent, EnvironmentalLiveComponent],
   bootstrap:    [ AppComponent ],
   providers: [Globals]
 })
