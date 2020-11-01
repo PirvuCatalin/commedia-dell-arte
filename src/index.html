@@ -5,6 +5,26 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
   <body class="mat-typography">
-  <my-app>loading</my-app>
+  <my-app>
+    <img class="img-responsive brand2" src="./assets/images/brand.png">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <div id="blurringTextG"><div id="blurringTextG_1" class="blurringTextG"><script>this.random_string</script></div>
+  </my-app>
+  <script>
+    variable : string = "Loading";
+    months = [
+      "Green is the fresh emblem of well founded hopes. In blue the spirit can wander, but in green it can rest.",
+      "Nature in her green tranquil woods heals and soothes all afflictions.",
+      "Nature's first green is gold.",
+      "Green fingers are the extension of a verdant heart.",
+      "All our wisdom is stored in the trees.",
+      "Colorless green ideas sleep furiously.",
+      "No water, no life. No blue, no green."
+
+    ];
+
+    random = Math.floor(Math.random() * this.months.length);
+    this.random_string = this.months[this.random]
+  </script>
   </body>
 </html>

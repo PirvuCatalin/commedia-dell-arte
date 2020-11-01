@@ -21,7 +21,7 @@ export class AppComponent implements OnInit  {
   value: number = this.globals.year;
   yearOptions: SliderOptions = {
     floor: 0,
-    ceil: 250
+    ceil: 2003
   };
 
   months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov", "Dec"]
@@ -80,6 +80,7 @@ export class AppComponent implements OnInit  {
   
   countryTemperatures = [];
 
+  countriesInfo = [];
 
   ngOnInit(): void {
     this.newsfeedService.getYearIntervals().subscribe(yearIntervals => {
@@ -88,20 +89,105 @@ export class AppComponent implements OnInit  {
       this.globals.year = 2003;
     });
 
-    this.updateTemperatures();
+    this.newsfeedService.getCountriesInfo().subscribe(countriesInfo => {
+      this.countriesInfo = countriesInfo;
+      
+      let index = -1;
+      for(var i in this.countriesInfo) {
+        if (Object.keys(this.countriesInfo[i])[0] === "Antarctica") {
+          index = parseInt(i);
+          break;
+        }
+      }
+      if (index > -1) {
+        this.countriesInfo.splice(index, 1);
+      }
+
+      this.countriesInfo.sort((a,b) =>  (Object.keys(a)[0] > Object.keys(b)[0] ? 1 : -1 ));
+
+      this.updateTemperatures();
+    });
+
   }
 
   updateTemperatures(): void {
     this.newsfeedService.getTemperatures(this.globals.year, this.globals.month).subscribe(countryTemperatures => {
       this.countryTemperatures = countryTemperatures;
+    
+      this.countryTemperatures.splice(0,1);
 
-      this.chartOptions.series[0]["data"] = this.countryTemperatures;
+      this.countryTemperatures.sort((a,b) =>  (a.country > b.country ? 1 : -1 ));
+
+      let countryTemps = [];
+
+      for(var i in this.countryTemperatures) {
+
+        
+
+          if(this.countryTemperatures[i]["country"] === "United States") {
+            this.countryTemperatures[i]["country"] = "United States of America"
+            if(this.countriesInfo[i]["United States"]){
+              countryTemps.push(["United States of America", this.countryTemperatures[i]["temp"], 
+          this.countriesInfo[i]["United States"][0], this.countriesInfo[i]["United States"][1], this.countriesInfo[i]["United States"][2]]);
+            } else {
+              countryTemps.push(["United States of America", this.countryTemperatures[i]["temp"]]);
+            }
+            
+          continue;
+          } else if(this.countryTemperatures[i]["country"] === "Bahamas") {
+            this.countryTemperatures[i]["country"] = "The Bahamas"
+            countryTemps.push(["The Bahamas", this.countryTemperatures[i]["temp"]]);
+          continue;
+          } else if(this.countryTemperatures[i]["country"] === "Serbia") {
+            this.countryTemperatures[i]["country"] = "Reublic of Serbia"
+            countryTemps.push(["Reublic of Serbia", this.countryTemperatures[i]["temp"]]);
+          continue;
+          } else if(this.countryTemperatures[i]["country"] === "C\u00f4te D'Ivoire") {
+            this.countryTemperatures[i]["country"] = "Ivory Coast"
+            countryTemps.push(["Ivory Coast", this.countryTemperatures[i]["temp"]]);
+          continue;
+          } else if(this.countryTemperatures[i]["country"] === "Cayman Islands") {
+            continue;
+          } else if(this.countryTemperatures[i]["country"] === "Svalbard And Jan Mayen") {
+            continue;
+          } else if(this.countryTemperatures[i]["country"] === "Oceania") {
+            continue;
+          } else if(this.countryTemperatures[i]["country"] === "Sudan") {
+            countryTemps.push(["South Sudan", this.countryTemperatures[i]["temp"]]);
+          } else if(this.countryTemperatures[i]["country"] === "Tanzania") {
+            this.countryTemperatures[i]["country"] = "United Republic of Tanzania";
+            countryTemps.push(["United Republic of Tanzania", this.countryTemperatures[i]["temp"]]);
+          continue;
+          } else if(this.countryTemperatures[i]["country"] === "Congo" || this.countryTemperatures[i]["country"] === "Congo (Democratic Republic Of The)") {
+            this.countryTemperatures[i]["country"] = "Democratic Republic of the Congo";
+            countryTemps.push(["Democratic Republic of the Congo", this.countryTemperatures[i]["temp"]]);
+            countryTemps.push(["Republic of Congo", this.countryTemperatures[i]["temp"]]);
+            continue;
+          }
+          
+          console.log(this.countryTemperatures[i]["country"]);
+          console.log(this.countriesInfo[i]);
+          console.log(this.countriesInfo[i][this.countryTemperatures[i]["country"]]);
+
+          if(this.countriesInfo[i][this.countryTemperatures[i]["country"]]) {
+            countryTemps.push([this.countryTemperatures[i]["country"], this.countryTemperatures[i]["temp"], 
+            this.countriesInfo[i][this.countryTemperatures[i]["country"]][0], this.countriesInfo[i][this.countryTemperatures[i]["country"]][1], this.countriesInfo[i][this.countryTemperatures[i]["country"]][2]]);
+          } else {
+            countryTemps.push([this.countryTemperatures[i]["country"], this.countryTemperatures[i]["temp"], "","",""]);
+          }
+          
+      }
+
+
+      console.log(countryTemps);
+
+      this.chartOptions.series[0]["data"] = countryTemps;
 
       this.updateTemperaturesFlag = true;
       
     });
   }
-
+  
   yearSliderOnChange(changeContext : ChangeContext) {
     this.globals.year = changeContext.value;
     this.updateTemperatures();
@@ -154,10 +240,13 @@ export class AppComponent implements OnInit  {
     series: [
       {
         type: "map",
-        name: "Random data",
+        name: "Top factors:",
+        tooltip: {
+            pointFormat: '<br>{point.info1}<br> {point.info2}<br> {point.info3} '
+        },
         states: {
           hover: {
-            color: "#BADA55"
+            color: "#000000"
           }
         },
         dataLabels: {
@@ -165,10 +254,12 @@ export class AppComponent implements OnInit  {
           format: "{point.name}"
         },
         allAreas: false,
-        keys: ['name', 'value'],
+        keys: ['name', 'value', 'info1', 'info2', 'info3'],
         joinBy: 'name',
         data: this.countryTemperatures
       }
     ]
   };
+
+
 }

@@ -27,15 +27,15 @@
 			[fontSize]="config.fontSize"></ng-toggle>
 		</div>
 
-		<div style="display:inline-block; width: 40%; margin-left: 3%;">
+		<div style="display:inline-block; width: 40%; margin-left: 10%;">
 			<ngx-slider (userChangeEnd)="yearSliderOnChange($event)" [(value)]="this.globals.year" [options]="yearOptions"></ngx-slider>
 		</div>
 
-		<div style="display:inline-block; margin-left: 3%;">
-			<p>Selected year: <input type="number" [(ngModel)]="this.globals.year"></p>
-		</div>
+		<!-- <div style="display:inline-block; margin-left: 3%;">
+			<p>Selected year: <input type="number" [(ngModel)]="this.globals.year" ></p>
+		</div> -->
 		
-		<div style="display:inline-block; width: 35%; margin-left: 3%;">
+		<div style="display:inline-block; width: 35%; margin-left: 10%;">
 			<ngx-slider (userChangeEnd)="monthSliderOnChange($event)" [(value)]="this.globals.month" [options]="monthOptions"></ngx-slider>
 		</div>
 	  	
