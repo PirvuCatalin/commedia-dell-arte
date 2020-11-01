@@ -20,7 +20,7 @@ export class EnvironmentalLiveComponent implements OnInit {
     this.refreshData();
     this.interval = setInterval(() => { 
         this.refreshData(); 
-    }, 1000);
+    }, 5000);
   }
 
   refreshData(){
