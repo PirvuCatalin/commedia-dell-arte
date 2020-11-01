@@ -15,11 +15,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import { NgToggleModule } from 'ng-toggle-button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule, MatCardModule, NgToggleModule, NgxSliderModule, ReactiveFormsModule],
-  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent, LoadingScreenComponent],
+  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent],
   bootstrap:    [ AppComponent ],
   providers: [Globals]
 })

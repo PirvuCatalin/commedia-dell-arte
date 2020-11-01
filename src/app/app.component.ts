@@ -43,7 +43,7 @@ export class AppComponent implements OnInit  {
   }
 
   config = {
-    value: true,
+    value: false,
     name: '',
     disabled: false,
     height: 25,
@@ -165,9 +165,6 @@ export class AppComponent implements OnInit  {
             continue;
           }
           
-          console.log(this.countryTemperatures[i]["country"]);
-          console.log(this.countriesInfo[i]);
-          console.log(this.countriesInfo[i][this.countryTemperatures[i]["country"]]);
 
           if(this.countriesInfo[i][this.countryTemperatures[i]["country"]]) {
             countryTemps.push([this.countryTemperatures[i]["country"], this.countryTemperatures[i]["temp"], 
@@ -179,7 +176,6 @@ export class AppComponent implements OnInit  {
       }
 
 
-      console.log(countryTemps);
 
       this.chartOptions.series[0]["data"] = countryTemps;
 
@@ -209,7 +205,7 @@ export class AppComponent implements OnInit  {
       backgroundColor: '#C0C0C0'
     },
     title: {
-      text: "Highmaps basic demo"
+      text: "Historical temperatue & prediction"
     },
     subtitle: {
       text:

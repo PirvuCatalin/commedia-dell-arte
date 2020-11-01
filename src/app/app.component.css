@@ -4,8 +4,33 @@ p {
 
 #container {
   width: 65%; 
-  margin-top: 2%;
   margin-left: 33%;
   height: 65%; 
   display: block;
+}
+
+.yearTipText {
+  white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			position:absolute;
+			width: inherit;
+			color: dimgray;
+}
+.yearTipText:hover {
+  overflow: visible;
+}
+
+
+
+.yearTipText1 {
+  padding-left: 2em;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.yearTipText1:hover {
+  overflow: visible;
 }
