@@ -21,9 +21,9 @@ export class NewsfeedService {
   temperaturesUrl = "https://utilitary-services.herokuapp.com/get_temperatures";
   countryInfoUrl = "https://utilitary-services.herokuapp.com/get_country_info";
   liveDataUrl = "https://mysterious-reef.herokuapp.com/get_live_data";
-  seaLevelUrl = "http://mysterious-reef.herokuapp.com/get_sea_level";
-  cO2PpmUrl = "http://mysterious-reef.herokuapp.com/get_co2_ppm";
-  meanTemperaturesUrl = "http://mysterious-reef.herokuapp.com/get_mean_temperatures";
+  seaLevelUrl = "https://mysterious-reef.herokuapp.com/get_sea_level";
+  cO2PpmUrl = "https://mysterious-reef.herokuapp.com/get_co2_ppm";
+  meanTemperaturesUrl = "https://mysterious-reef.herokuapp.com/get_mean_temperatures";
 
   mockNewsfeeds : NewsFeed[] = [
     {title:"Un titlu de articol foarte smecher cu catei aruncati de pe marte.", year:2019, link:"https://www.google.ro"},

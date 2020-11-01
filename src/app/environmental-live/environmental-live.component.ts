@@ -22,8 +22,30 @@ export class EnvironmentalLiveComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   updateFlag = false;
   chartOptions: Highcharts.Options = {
+    tooltip: {
+      backgroundColor: {
+          stops: [
+              [0, '#FFFFFF'],
+              [1, '#E0E0E0']
+          ]
+      },
+      borderWidth: 1,
+      borderColor: '#AAA'
+  },
+    title: {
+      text: 'Mean temperature'
+    },
+    subtitle: {
+        text: 'Showing the evolution over time'
+    },
+    yAxis: {
+      title: {
+        text: "Mean Temperature"
+      }
+    },
     series: [
       {
+        name:"World",
         type: "line",
         data: []
       }
