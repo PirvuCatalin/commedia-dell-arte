@@ -1,3 +1,8 @@
 table {
-  width: 100%;
+  width: 30%;
+}
+
+
+tr.mat-row {
+    height: 0%;
 }
