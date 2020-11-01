@@ -10,9 +10,14 @@
 }
 
 .card {
-    background-color: rgba(255,0,0,0.55);
+    background-color: #424242;
 }
 
 .card-body:hover {
-    background-color: rgba(255, 255, 0, 0.8);
+    background-color: #aad3ebcc;
+}
+
+h4 {
+    color: #f1f1decc;
+    text-align: center;
 }
