@@ -17,6 +17,7 @@ export class NewsfeedService {
   intervalYearsUrl = "https://mysterious-reef.herokuapp.com/get_interval_heads";
   temperaturesUrl = "https://mysterious-reef.herokuapp.com/get_temperatures";
   countryInfoUrl = "https://mysterious-reef.herokuapp.com/get_country_info";
+  liveDataUrl = "https://mysterious-reef.herokuapp.com/get_live_data";
 
   mockNewsfeeds : NewsFeed[] = [
     {title:"Un titlu de articol foarte smecher cu catei aruncati de pe marte.", year:2019, link:"https://www.google.ro"},
@@ -70,5 +71,13 @@ export class NewsfeedService {
         
       })
     );
-}
+  }
+
+  getLiveData(): Observable<JSON> {
+    return this.http.get<ResultInterface>(this.liveDataUrl).pipe(
+      map(results => { 
+        return results["result"];
+      })
+    );
+  }  
 }

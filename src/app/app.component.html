@@ -7,9 +7,6 @@
 
 
 
-
-
-
 <div>
 	<div>
 		<mat-card style="width: 100%; height: 15px;"></mat-card>
@@ -48,10 +45,13 @@
 		<!-- <mat-slider #mySlider style="margin-left: 50%;" thumbLabel tickInterval="1" min={{yearIntervals.yearMin}} value={{this.globals.year}} max={{yearIntervals.yearMax}}
 			(slideend)="sliderOnChange(mySlider.value)" (pointerup)="sliderOnChange(mySlider.value)"></mat-slider> -->
 	</div>
+	<div>
+	<app-environmental-live></app-environmental-live>
 
 	<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
 		[options]="chartOptions" [(update)]="updateTemperaturesFlag">
 	</highcharts-chart>
+</div>
 </div>
 
 <app-footer></app-footer>
