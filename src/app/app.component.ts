@@ -21,6 +21,7 @@ export class AppComponent implements OnInit  {
     yearMax: null,
     yearMin: null
   };
+  
   updateTemperaturesFlag = false;
   countryTemperatures = [];
 
