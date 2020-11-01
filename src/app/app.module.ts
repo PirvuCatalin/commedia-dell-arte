@@ -13,10 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HighchartsChartModule, MDBBootstrapModule.forRoot() , HttpClientModule, BrowserAnimationsModule, MatSliderModule, MatCardModule],
-  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent ],
+  declarations: [ AppComponent, BrandComponent, FooterComponent, NewsfeedComponent, LoadingScreenComponent ],
   bootstrap:    [ AppComponent ],
   providers: [Globals]
 })
