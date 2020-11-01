@@ -12,9 +12,38 @@
 
 <div>
 	<div>
-		<mat-card style="width: 100%;">Simple card</mat-card>
-		<mat-slider #mySlider style="margin-left: 50%;" thumbLabel tickInterval="1" min={{yearIntervals.yearMin}} value={{this.globals.year}} max={{yearIntervals.yearMax}}
-			(slideend)="sliderOnChange(mySlider.value)" (pointerup)="sliderOnChange(mySlider.value)"></mat-slider>
+		<mat-card style="width: 100%; height: 15px;"></mat-card>
+		<div style="display:inline-block;">
+			<ng-toggle
+			[(ngModel)]="config.value"
+			[disabled]="config.disabled"
+			[width]="config.width"
+			[height]="config.height"
+			[margin]="config.margin"
+			[labels]="config.labels"
+			[color]="config.color"
+			[switchColor]="config.switchColor"
+			[fontColor]="config.fontColor"
+			[fontSize]="config.fontSize"></ng-toggle>
+		</div>
+
+		<div style="display:inline-block; width: 40%; margin-left: 3%;">
+			<ngx-slider (userChangeEnd)="yearSliderOnChange($event)" [(value)]="this.globals.year" [options]="yearOptions"></ngx-slider>
+		</div>
+
+		<div style="display:inline-block; margin-left: 3%;">
+			<p>Selected year: <input type="number" [(ngModel)]="this.globals.year"></p>
+		</div>
+		
+		<div style="display:inline-block; width: 35%; margin-left: 3%;">
+			<ngx-slider (userChangeEnd)="monthSliderOnChange($event)" [(value)]="this.globals.month" [options]="monthOptions"></ngx-slider>
+		</div>
+	  	
+
+		
+
+		<!-- <mat-slider #mySlider style="margin-left: 50%;" thumbLabel tickInterval="1" min={{yearIntervals.yearMin}} value={{this.globals.year}} max={{yearIntervals.yearMax}}
+			(slideend)="sliderOnChange(mySlider.value)" (pointerup)="sliderOnChange(mySlider.value)"></mat-slider> -->
 	</div>
 
 	<highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"

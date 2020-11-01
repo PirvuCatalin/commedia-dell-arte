@@ -4,7 +4,8 @@ p {
 
 #container {
   width: 65%; 
-  top: 200px;
-  height: 70%; 
+  margin-top: 2%;
+  margin-left: 33%;
+  height: 65%; 
   display: block;
 }
