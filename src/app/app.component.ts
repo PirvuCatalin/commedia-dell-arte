@@ -257,5 +257,9 @@ export class AppComponent implements OnInit  {
     ]
   };
 
-
+  buttonChanged(e : any) : void {
+    if(!(e instanceof Event)) {
+      this.config.value = e;
+    }
+  }
 }
